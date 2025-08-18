@@ -1,5 +1,5 @@
 // TMDB API Configuration
-const API_KEY = 'your_api_key_here'; // Replace with your TMDB API key
+<script src="config.js"></script>
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
