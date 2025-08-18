@@ -1,0 +1,12 @@
+{
+  "name": "movieClub",
+  "version": "1.0.0",
+  "description": "My web service",
+  "main": "index.html",
+  "scripts": {
+    "start": "node index.html"
+  },
+  "dependencies": {
+    "express": "^4.19.0"
+  }
+}
