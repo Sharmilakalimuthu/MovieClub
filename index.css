@@ -1,14 +1,22 @@
+/* Base & Layout */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: #333;
-    min-height: 100vh;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: linear-gradient(160deg, #0b0f19 0%, #11193a 30%, #1c2857 30%, #11193a 40%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: var(--text, #eaf0ff);
+    transition: background 0.5s ease-in-out;
 }
 
 .container {
@@ -17,15 +25,20 @@ body {
     padding: 20px;
 }
 
+/* Header */
 .header {
     text-align: center;
     margin-bottom: 40px;
     color: white;
+    animation: fadeIn 1s ease-in;
 }
 
 .header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    background: linear-gradient(90deg, #6ea8fe, #84f1c9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .header p {
@@ -33,12 +46,19 @@ body {
     opacity: 0.8;
 }
 
+/* Search Section */
 .search-section {
-    background: white;
+    background: rgba(17, 25, 58, 0.95);
     border-radius: 15px;
     padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 40px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
 }
 
 .search-box {
@@ -50,15 +70,18 @@ body {
 .search-box input {
     flex: 1;
     padding: 12px 20px;
-    border: 2px solid #ddd;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
     border-radius: 25px;
     font-size: 16px;
     outline: none;
-    transition: border-color 0.3s;
+    border: 1px solid #2a5298;
+    transition: all 0.3s;
 }
 
 .search-box input:focus {
     border-color: #2a5298;
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 .search-box button {
@@ -69,13 +92,15 @@ body {
     border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .search-box button:hover {
-    background: #1e3c72;
+    background: #4277d1;
+    transform: scale(1.05);
 }
 
+/* Filter Buttons */
 .filter-buttons {
     display: flex;
     justify-content: center;
@@ -87,7 +112,7 @@ body {
     padding: 10px 20px;
     border: 2px solid #2a5298;
     background: transparent;
-    color: #2a5298;
+    color: white;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s;
@@ -96,18 +121,22 @@ body {
 
 .filter-btn.active,
 .filter-btn:hover {
-    background: #2a5298;
-    color: white;
+    background: #4277d1;
+    color: #0b0f19;
+    transform: scale(1.05);
 }
 
+/* Loading */
 .loading {
     text-align: center;
     color: white;
     font-size: 18px;
     margin: 40px 0;
     display: none;
+    animation: pulse 1s infinite;
 }
 
+/* Movie Cards */
 .movies-container h2 {
     color: white;
     text-align: center;
@@ -122,23 +151,30 @@ body {
 }
 
 .movie-card {
-    background: white;
+    background: #11193a;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
     cursor: pointer;
+    position: relative;
 }
 
 .movie-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+    filter: brightness(1.05);
 }
 
 .movie-poster {
     width: 100%;
     height: 350px;
     object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.movie-card:hover .movie-poster {
+    transform: scale(1.05);
 }
 
 .movie-info {
@@ -160,21 +196,26 @@ body {
 }
 
 .movie-year {
-    color: #666;
+    color: #aaa;
     font-size: 0.9rem;
 }
 
 .movie-rating {
-    background: #2a5298;
-    color: white;
+    background: #84f1c9;
+    color: #0b0f19;
     padding: 4px 8px;
     border-radius: 10px;
     font-size: 0.8rem;
     font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.movie-card:hover .movie-rating {
+    transform: scale(1.1);
 }
 
 .movie-overview {
-    color: #666;
+    color: #ccc;
     font-size: 0.9rem;
     line-height: 1.4;
     display: -webkit-box;
@@ -183,15 +224,7 @@ body {
     overflow: hidden;
 }
 
-.no-results {
-    text-align: center;
-    color: white;
-    font-size: 1.2rem;
-    margin: 50px 0;
-    display: none;
-}
-
-/* Modal Styles */
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -200,11 +233,12 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.9);
+    animation: fadeIn 0.3s ease-in;
 }
 
 .modal-content {
-    background: white;
+    background: #0b0f19;
     margin: 5% auto;
     border-radius: 15px;
     width: 90%;
@@ -212,15 +246,24 @@ body {
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
+    color: white;
+    overflow-x: hidden;
+    overflow-y: auto; 
 }
 
 .modal-header {
+    position: relative; 
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     color: white;
     padding: 30px;
     display: flex;
     align-items: center;
     gap: 25px;
+    transition: transform 0.3s;
+}
+
+.modal-header:hover {
+    transform: scale(1.02);
 }
 
 .modal-header img {
@@ -239,6 +282,29 @@ body {
     margin-bottom: 8px;
     opacity: 0.9;
 }
+
+.visit-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+    margin: 0;
+    float: right;
+    background: #84f1c9;
+    color: #0b0f19;
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s;
+}
+
+.visit-btn:hover {
+    transform: scale(1.05);
+}
+
 
 .close {
     position: absolute;
@@ -267,44 +333,37 @@ body {
 }
 
 .genre-tag {
-    background: #2a5298;
-    color: white;
+    background: #84f1c9;
+    color: #0b0f19;
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.genre-tag:hover {
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .header h1 {
-        font-size: 2rem;
-    }
-    
-    .search-section {
-        padding: 20px;
-    }
-    
-    .movies-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
-    }
-    
-    .modal-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .modal-header img {
-        width: 120px;
-        height: 160px;
-    }
-    
-    .filter-buttons {
-        justify-content: center;
-    }
-    
-    .filter-btn {
-        font-size: 0.9rem;
-        padding: 8px 15px;
-    }
+    .header h1 { font-size: 2rem; }
+    .search-section { padding: 20px; }
+    .movies-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
+    .modal-header { flex-direction: column; text-align: center; }
+    .modal-header img { width: 120px; height: 160px; }
+    .filter-btn { font-size: 0.9rem; padding: 8px 15px; }
 }

@@ -1,5 +1,3 @@
-// TMDB API Configuration
-<script src="config.js"></script>
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -94,7 +92,7 @@ async function loadMovies(category) {
     };
     
     try {
-        const url = `${BASE_URL}${endpoints[category]}?api_key=${API_KEY}&language=en-US&page=1`;
+        const url = `${BASE_URL}${endpoints[category]}?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
         const response = await fetch(url);
         
         if (!response.ok) {
@@ -120,7 +118,7 @@ async function searchMovies(query) {
     showLoading(true);
     
     try {
-        const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=1`;
+        const url = `${BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=1`;
         const response = await fetch(url);
         
         if (!response.ok) {
@@ -175,7 +173,7 @@ async function openMovieModal(movieId) {
         showLoading(true);
         
         // Fetch detailed movie info
-        const url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+        const url = `${BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}&language=en-US`;
         const response = await fetch(url);
         
         if (!response.ok) {
@@ -193,6 +191,9 @@ async function openMovieModal(movieId) {
         document.getElementById('modalRating').textContent = `Rating: ⭐ ${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10`;
         document.getElementById('modalRuntime').textContent = `Runtime: ${movie.runtime ? movie.runtime + ' minutes' : 'N/A'}`;
         document.getElementById('modalOverview').textContent = movie.overview || 'No overview available.';
+        
+        const tmdbLink = document.getElementById('tmdbLink');
+        tmdbLink.href = `https://www.themoviedb.org/movie/${movie.id}`; 
         
         // Display genres
         const genresContainer = document.getElementById('modalGenres');
@@ -228,10 +229,4 @@ function showLoading(show) {
 // Show error message
 function showError(message) {
     moviesGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: white; padding: 40px;">${message}</div>`;
-}
-
-// Check if API key is set
-if (API_KEY === 'your_api_key_here') {
-    console.warn('⚠️ Please set your TMDB API key in script.js');
-    showError('Please set your TMDB API key in script.js to load movies.');
 }
