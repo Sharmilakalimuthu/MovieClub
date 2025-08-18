@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 MovieRamp - Ultimate Movie Finder</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎬 MovieRamp</h1>
+            <p>Your Ultimate Movie Finder</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search for movies..." />
+                <button id="searchBtn">🔍</button>
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="trending">Trending</button>
+                <button class="filter-btn" data-category="popular">Popular</button>
+                <button class="filter-btn" data-category="top_rated">Top Rated</button>
+                <button class="filter-btn" data-category="upcoming">Upcoming</button>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">Loading movies...</div>
+
+        <div class="movies-container">
+            <h2 id="sectionTitle">Trending Movies</h2>
+            <div class="movies-grid" id="moviesGrid"></div>
+        </div>
+
+        <div class="no-results" id="noResults">
+            <p>No movies found. Try a different search!</p>
+        </div>
+    </div>
+
+    <!-- Movie Modal -->
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <img id="modalPoster" alt="Movie Poster">
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalYear"></p>
+                    <p id="modalRating"></p>
+                    <p id="modalRuntime"></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p id="modalOverview"></p>
+                <div class="modal-genres" id="modalGenres"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
