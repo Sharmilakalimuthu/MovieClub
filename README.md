@@ -16,14 +16,3 @@ A clean, responsive movie explorer where users can search titles and view detail
 
 ## 🧰 Tech Stack
 - **Frontend:** HTML, CSS, JavaScript  
-- **API:** OMDb / TMDb (update with whichever you used)  
-- **Hosting:** GitHub Pages  
-
----
-
-## 🚀 Getting Started
-
-### Clone the repo
-```bash
-git clone https://github.com/sharmilakalimuthu/MovieClub.git
-cd MovieClub
