@@ -1,35 +1,41 @@
 # 🎬 MovieClub
 
-MovieClub is a sleek, interactive web app that allows users to discover trending, popular, top-rated, and upcoming movies. Powered by **The Movie Database (TMDB) API**, it features search functionality, detailed movie info modals, and responsive design for a seamless experience on desktop and mobile.
-
----
+MovieClub is a sleek, user-friendly web app to discover trending, popular, top-rated, and upcoming movies effortlessly. Search for movies, view details, ratings, runtime, and genres—all in one place!
 
 ## 🌐 Live Demo
-Check out the live demo here: [MovieClub Live](https://sharmilakalimuthu.github.io/MovieClub/)
+[Try MovieClub Live](https://sharmilakalimuthu.github.io/MovieClub/)
 
----
+## 📸 Screenshots
 
-## 🛠 Features
+### Home Page - Trending Movies
+![MovieClub Home](https://via.placeholder.com/800x450.png?text=MovieClub+Home+Page)
 
-- **Search Movies:** Quickly find any movie by its name.
-- **Browse Categories:** Trending, Popular, Top Rated, Upcoming.
-- **Movie Details Modal:** View movie poster, rating, release year, runtime, overview, and genres.
-- **Responsive Design:** Works beautifully on mobile, tablet, and desktop.
-- **Interactive UI:** Hover effects, modals, and filter buttons for smooth user experience.
+### Search Results
+![MovieClub Search](https://via.placeholder.com/800x450.png?text=Movie+Search+Results)
 
----
+### Movie Details Modal
+![MovieClub Modal](https://via.placeholder.com/800x450.png?text=Movie+Details+Modal)
 
-## 💻 Technologies Used
+## 💻 Features
 
-- **HTML5**
-- **CSS3**
-- **JavaScript (ES6)**
-- **TMDB API** for movie data
+- Browse **Trending**, **Popular**, **Top Rated**, and **Upcoming** movies
+- **Search** for any movie
+- View detailed **movie information** in a modal:
+  - Title, release year, rating, runtime
+  - Overview and genres
+  - Direct link to TMDB page
+- Responsive design for **mobile, tablet, and desktop**
+- Smooth **animations** and interactive UI
 
----
+## ⚙️ Technologies Used
 
-## 🚀 Getting Started
+- HTML5, CSS3, JavaScript (Vanilla JS)
+- Fetch API for TMDB integration
+- Responsive Grid Layout
+- CSS Animations for hover effects and modal transitions
 
-### 1. Clone the Repository
+## 🔑 Getting Started
+
+1. Clone the repository:
 ```bash
 git clone https://github.com/Sharmilakalimuthu/MovieClub.git
